@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h2>{{ evenement.nom }}</h2>
+  <p><strong>Date :</strong> {{ evenement.date }}</p>
+  <p><strong>Description :</strong> {{ evenement.description }}</p>
+  <p><strong>Capacité :</strong> {{ evenement.capacite }}</p>
+
+  <div class="row mt-4">
+    {% for img in evenement.images.all %}
+      <div class="col-md-4 mb-3">
+        <img src="{{ img.image.url }}" alt="{{ img.legende }}" class="img-fluid rounded">
+      </div>
+    {% endfor %}
+  </div>
+
+  <a href="{% url 'liste_evenements' %}" class="btn btn-secondary mt-3">Retour</a>
+</div>
+{% endblock %}

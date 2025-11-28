@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Événements - Festy Event</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/evenements.css' %}">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="{% url 'home' %}" class="logo">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Festy Event</span>
+        </a>
+        <nav>
+          <a href="{% url 'liste_evenements' %}" style="color: var(--primary); font-weight: 600;">Événements</a>
+          <a href="#">Lieux</a>
+          <a href="#">Organiser</a>
+          <a href="/admin/" class="btn btn-primary">Admin</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+    <!-- Page Header -->
+    <header style="margin-bottom: 3rem;">
+      <h1 style="font-size: 3rem; font-weight: bold; margin-bottom: 1rem;">
+        Tous les événements
+      </h1>
+      <p style="font-size: 1.125rem; color: var(--muted);">
+        Découvrez et réservez votre place pour les meilleurs événements
+      </p>
+    </header>
+
+    <!-- Search -->
+    <form method="GET" action="{% url 'liste_evenements' %}" class="filters-container">
+      <div class="search-wrapper">
+        <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input 
+          type="text" 
+          name="search" 
+          placeholder="Rechercher un événement..." 
+          value="{{ search_query }}" 
+          class="search-input"
+        >
+      </div>
+      <button type="submit" class="btn btn-primary">Rechercher</button>
+    </form>
+
+    <!-- Add Event Button -->
+    <div style="margin-top: 2rem; margin-bottom: 2rem; text-align: right;">
+      <a href="{% url 'ajouter_evenement' %}" class="btn btn-primary btn-lg">
+        <span style="font-size: 1.5rem;">+</span> Créer un événement
+      </a>
+    </div>
+
+    <!-- Results Count -->
+    <div style="margin-bottom: 1.5rem; color: var(--muted);">
+      {{ evenements.count }} événement{{ evenements.count|pluralize }} trouvé{{ evenements.count|pluralize }}
+    </div>
+
+    <!-- Events Grid -->
+    {% if evenements %}
+      <div class="cards-grid">
+        {% for event in evenements %}
+          <div class="card">
+            {% if event.images.exists %}
+              <img src="{{ event.images.first.image.url }}" alt="{{ event.nom }}" class="card-image">
+            {% else %}
+              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800"
+                   alt="{{ event.nom }}" class="card-image">
+            {% endif %}
+            <div class="card-content">
+              <div class="card-category">Événement</div>
+              <h3 class="card-title">{{ event.nom }}</h3>
+
+              <div class="card-info">
+                <div class="card-info-item">📅 {{ event.date|date:"d F Y à H:i" }}</div>
+                <div class="card-info-item">👥 {{ event.capacite }} places</div>
+                <div class="card-info-item">📷 {{ event.images.count }} image{{ event.images.count|pluralize }}</div>
+              </div>
+
+              <p class="event-description">{{ event.description|truncatewords:20 }}</p>
+
+              <a href="{% url 'detail_evenement' event.pk %}" class="btn btn-outline"
+                 style="margin-top: 1rem; width: 100%; justify-content: center;">
+                Voir les détails
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align: center; padding: 5rem 0;">
+        <p style="font-size: 1.25rem; color: var(--muted);">
+          Aucun événement trouvé avec ces critères.
+        </p>
+      </div>
+    {% endif %}
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Festy Event</span>
+          </div>
+          <p class="footer-description">
+            La plateforme événementielle qui connecte organisateurs et participants
+            pour créer des expériences mémorables.
+          </p>
+        </div>
+
+        <div>
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="{% url 'liste_evenements' %}">Événements</a></li>
+            <li><a href="#">Lieux</a></li>
+            <li><a href="#">Organiser</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>contact@festy-event.com</li>
+            <li>+33 1 23 45 67 89</li>
+            <li>Paris, France</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Festy Event. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

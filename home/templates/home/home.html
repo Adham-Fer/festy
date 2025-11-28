@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festy Event - Plateforme d'événementiel</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="{% url 'home' %}" class="logo">
+          <div class="logo-icon"></div>
+          <span class="logo-text">Festy Event</span>
+        </a>
+        <nav>
+          <a href="{% url 'events' %}">Événements</a>
+          <a href="{% url 'venues' %}">Lieux</a>
+          <!-- <a href="{% url 'organize' %}">Organiser</a> -->
+          <a href="{% url 'login' %}" class="btn btn-primary">Connexion</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200" alt="Hero">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <div class="hero-badge">
+            <svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M9.5 2c-1.82 0-3.53.5-5 1.35 2.99 1.73 5 4.95 5 8.65s-2.01 6.92-5 8.65c1.47.85 3.18 1.35 5 1.35 5.52 0 10-4.48 10-10S15.02 2 9.5 2z"/></svg>
+            <span>Plateforme d'événementiel</span>
+          </div>
+          <h1>Créez des <span class="text-gradient">événements</span> inoubliables</h1>
+          <p class="hero-description">
+            Organisez, gérez et participez aux meilleurs événements près de chez vous.
+            Une plateforme complète pour tous vos besoins événementiels.
+          </p>
+          <div class="hero-buttons">
+            <a href="{% url 'organize' %}" class="btn btn-primary btn-lg">
+              Organiser un événement
+              <span>→</span>
+            </a>
+            <a href="{% url 'events' %}" class="btn btn-outline btn-lg">Découvrir les événements</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Événements organisés</div>
+        </div>
+        <div>
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Participants satisfaits</div>
+        </div>
+        <div>
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Lieux partenaires</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section id="events">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Événements à venir</h2>
+          <p class="section-description">Découvrez les prochains événements et réservez votre place</p>
+        </div>
+        <a href="#" class="btn btn-outline">
+          Voir tout
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800" alt="Event" class="card-image">
+          <div class="card-content">
+            <span class="card-category">Musique</span>
+            <h3 class="card-title">Festival de Musique Électronique 2024</h3>
+            <div class="card-info">
+              <div class="card-info-item">📅 15 Juin 2024</div>
+              <div class="card-info-item">📍 Paris Expo</div>
+              <div class="card-info-item">👥 3200 / 5000 inscrits</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 64%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800" alt="Event" class="card-image">
+          <div class="card-content">
+            <span class="card-category">Business</span>
+            <h3 class="card-title">Conférence Tech Innovation</h3>
+            <div class="card-info">
+              <div class="card-info-item">📅 22 Juin 2024</div>
+              <div class="card-info-item">📍 La Défense Arena</div>
+              <div class="card-info-item">👥 1850 / 2000 inscrits</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 92.5%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800" alt="Event" class="card-image">
+          <div class="card-content">
+            <span class="card-category">Gastronomie</span>
+            <h3 class="card-title">Salon du Vin et Gastronomie</h3>
+            <div class="card-info">
+              <div class="card-info-item">📅 30 Juin 2024</div>
+              <div class="card-info-item">📍 Grand Palais</div>
+              <div class="card-info-item">👥 2100 / 3000 inscrits</div>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Venues -->
+  <section id="venues" style="background: rgba(23, 23, 23, 0.3);">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Lieux populaires</h2>
+          <p class="section-description">Explorez nos espaces événementiels d'exception</p>
+        </div>
+        <a href="#" class="btn btn-outline">
+          Voir tout
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800" alt="Venue" class="card-image">
+          <div class="venue-card-content">
+            <h3 class="venue-name">Paris Expo</h3>
+            <p class="venue-location">📍 Porte de Versailles, Paris</p>
+            <p class="venue-description">Espace modulable idéal pour les grands événements et festivals</p>
+            <p class="venue-capacity">Capacité: 10 000 personnes</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800" alt="Venue" class="card-image">
+          <div class="venue-card-content">
+            <h3 class="venue-name">La Défense Arena</h3>
+            <p class="venue-location">📍 Nanterre, Île-de-France</p>
+            <p class="venue-description">Centre de conférences moderne avec équipements haute technologie</p>
+            <p class="venue-capacity">Capacité: 5 000 personnes</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1519167758481-83f29da8c2b0?w=800" alt="Venue" class="card-image">
+          <div class="venue-card-content">
+            <h3 class="venue-name">Grand Palais</h3>
+            <p class="venue-location">📍 Champs-Élysées, Paris</p>
+            <p class="venue-description">Lieu historique prestigieux pour vos événements d'exception</p>
+            <p class="venue-capacity">Capacité: 8 000 personnes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="organize">
+    <div class="container">
+      <div class="cta">
+        <div class="cta-content">
+          <h2>Prêt à créer votre événement ?</h2>
+          <p>
+            Rejoignez des centaines d'organisateurs qui font confiance à Festy Event
+            pour gérer leurs événements professionnels.
+          </p>
+          <div class="hero-buttons">
+            <a href="#" class="btn btn-lg" style="background: white; color: var(--background);">
+              Commencer maintenant
+              <span>→</span>
+            </a>
+            <a href="#" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.2); color: white;">
+              Créer un compte
+            </a>
+          </div>
+        </div>
+        <div class="cta-bg-1"></div>
+        <div class="cta-bg-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Festy Event</span>
+          </div>
+          <p class="footer-description">
+            La plateforme événementielle qui connecte organisateurs et participants
+            pour créer des expériences mémorables.
+          </p>
+        </div>
+
+        <div>
+          <h4>Liens rapides</h4>
+          <ul>
+            <li><a href="#events">Événements</a></li>
+            <li><a href="#venues">Lieux</a></li>
+            <li><a href="#organize">Organiser</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>contact@festy-event.com</li>
+            <li>+33 1 23 45 67 89</li>
+            <li>Paris, France</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Festy Event. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
